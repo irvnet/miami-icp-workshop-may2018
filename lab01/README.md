@@ -2,9 +2,7 @@
 
 ## Running our first container...
 
-In this section we'll run a container and see how the mechanism works.
-
-Now that we have everything working its time to see more closely how to run containers. In this section, we'll run an Ubuntu 16.04 container to see how things work.
+In this section, we'll run an Ubuntu 16.04 container to see how things work.
 
 At the terminal enter:
 
