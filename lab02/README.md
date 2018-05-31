@@ -22,7 +22,7 @@ $ cd meetup
   www.listen(8080);
 ```
 
-1. In the meetup directory, create a file named "Dockerfile"... (nope, it doesn't need an extension) and enter the following code:
+2. In the meetup directory, create a file named "Dockerfile"... (nope, it doesn't need an extension) and enter the following code:
 
 ```
   FROM node:6.9.2
