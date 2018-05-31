@@ -2,7 +2,7 @@
 
 ![](images/repo-cover.jpg)
 
-**Session Objective:**  introduction to containers and Kubernetes. Overview of the "what" and "why" of Docker containers and an overview of container orchestration with Kubernetes. In addition to lecture and discussion will be some hands on labs to demonstrate how to install the required tools and see how containers work in practice. Attending this session will give you the basic skills to explore and experiment with containers to determine how they best fit your use cases, or just to have fun with them!
+**Session Objective:**  introduction to containers and Kubernetes. Overview of the "what" and "why" of Docker containers and an overview of container orchestration with Kubernetes. In addition to lecture and discussion will be some hands on labs to demonstrate how to install the required tools and see how containers work in practice with IBM Cloud Private. Attending this session will give you the basic skills to explore and experiment with containers to determine how they best fit your use cases, or just to have fun with them!
 
 ---
 
@@ -31,7 +31,7 @@ In this segment we'll talk through the basics:
 
 - [lab 05](lab05/README.md): Containerize and deploy a node.js application
 - [lab 06](lab06/README.md): Deploy a multi-container application
-- Discussion: Understanding enterprise clusters with [IBM Cloud Private](https://www.ibm.com/cloud/learn/what-is-private-cloud)
+
 
 **Questions?**
 
