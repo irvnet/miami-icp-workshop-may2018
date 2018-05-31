@@ -43,7 +43,7 @@ my-deploy    LoadBalancer   10.111.227.3    <pending>     80:30839/TCP     1m
 
 The port is open, so the nginx server should be available... now, we'll use the ip of the cluster, and the port we've exposed to access the server.
 
-Then we can assemble the url as http:// + [icp master ip] + ":" + [port assigned by minikube service].
+Then we can assemble the url as http:// + [icp master ip] + ":" + [port assigned by the service].
 If the ip address for the master of our cluster is 192.168.99.100 then we should use http://192.168.99.100:30839 to access our new Nginx server.
 
 ```
