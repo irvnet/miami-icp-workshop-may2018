@@ -3,13 +3,13 @@
 
 ## Deploying a Container to Kubernetes
 
-**In this section**, we'll run our first container on Kubernetes.
+**In this section**, we'll run our first container on Kubernetes. We'll work with a docker image that already has content in it. One of the things that makes containers easy and helpful is you can obtain images with software that's been pre-packaged and ready to run... that simplifies the usual effort to install and configure software.
 
-Development processes such as these are typically sped up with enhancements such as automation DevOps processes, however this is a helpful to get a fundamental look at how some of the underlying parts of the process work.
+
 
 ## Task 1: Deploy an Nginx server
 
-In this section we'll deploy an nginx server...
+In this section we'll deploy an Nginx web server...
 
 
 ```
@@ -44,7 +44,7 @@ my-deploy    LoadBalancer   10.111.227.3    <pending>     80:30839/TCP     1m
 The port is open, so the nginx server should be available... now, we'll use the ip of the cluster, and the port we've exposed to access the server.
 
 Then we can assemble the url as http:// + [icp master ip] + ":" + [port assigned by minikube service].
-If we put it all together, based on what's listed above: http://192.168.99.100:30839
+If the ip address for the master of our cluster is 192.168.99.100 then we should use http://192.168.99.100:30839 to access our new Nginx server.
 
 ```
 $ curl http://192.168.99.100:30839
@@ -59,9 +59,7 @@ $ curl http://192.168.99.100:30839
 
 ## Task 2: Scale the Nginx deployment and test its resilience
 
-The server is deployed, but what if we get a lot more traffic than we expected? Fortunately we have the option to easily update our deployments to account for scalability as well as updates to our applications.
-
-If we needed to scale our deployment to have more servers, we can use kubectl to do that as well...lets scale our deployment so it has a total of 5 pods.
+The server is deployed, but what if we get a lot more traffic than we expected? Fortunately we can manage more instances of our Nginx pods to handle the additional traffic. We'll use the kubectl client to scale our deployment so it has 5 copies running instead of just one.
 
 ```
 $ kubectl scale deploy my-deploy --replicas=5 --namespace=user99-ns
@@ -81,9 +79,7 @@ my-deploy-6fd857889c-xqvqz   1/1       Running   0          50s
 
 ```
 
-Our workloads on Kubernetes are quite resilient if we let the system handle things for us. When we asked the system to scale our Nginx deployment, it created a replicaset. A ReplicaSet ensures that a specified number of pod replicas are running at any given time. However, a Deployment is a higher-level concept that manages ReplicaSets and provides a lot of other useful features.
-
-Let's see how resilient our workload is by deleting a few pods!
+Our workloads on Kubernetes are quite resilient if we let the system handle things for us. Let's see how resilient our workload is by deleting a few pods!
 
 ```
 $ kubectl delete pod my-deploy-6fd857889c-xqvqz my-deploy-6fd857889c-nmccq --namespace=user99-ns
@@ -92,7 +88,7 @@ pod "my-deploy-6fd857889c-nmccq" deleted
 
 
 ```
-The pods are deleted as requested... but for both deleted pods, a new pod has been created in its place! Best of all... the service continues to keep track of all the appropriate pods and route traffic to them as soon as they're available.
+The pods are deleted as requested... but for both deleted pods, a new pod has been created in its place! Best of all... the service continues to keep track of all the appropriate pods and route network traffic to them as soon as they're available.
 
 ```
 $ kubectl get pods --namespace=user99-ns
@@ -109,7 +105,7 @@ my-deploy-6fd857889c-xqvqz   0/1       Terminating   0          3m
 
 ## Task 3: Update the pod with a new version of the software
 
-It's great that the system is deployed, running, and scaling... but what happens when we have new versions of our software to deploy? To do that we can simply update the existing deployment and tell it that there's a new version to roll out.
+It's great that the system scales now... but what happens when we have new versions of our software to deploy? To do that we can simply update the existing deployment and tell it that there's a new version of the image currently in use that should be rolled out.  
 
 ```
 $ kubectl set image deployment/my-deploy my-deploy=nginx:1.9 --namespace=user99-ns
@@ -117,7 +113,7 @@ deployment "my-deploy" image updated
 
 ```
 
-When we tell kubernetes that our deployment needs to update a new container image it coordinates with the service to terminate the old versions, roll out the new versions and ensure that the service continues to route traffic to the proper pods.
+When we tell kubernetes that our deployment needs to update a new container image it terminates the old versions while rolling out the new version, and ensures that the service will re-route traffic to the proper pods.
 
 ```
 
