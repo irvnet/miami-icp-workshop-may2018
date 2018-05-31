@@ -5,7 +5,7 @@ In this section we'll install the Docker engine so we can run containers locally
 
 **Installing the Docker engine**
 
-Technically... you don't need docker installed because our Kubernetes cluster already has it available on remote servers... however we'll, take a brief look at docker and run a few containers on our local machine before we try out kubernetes, so docker engine will need to be installed.
+First, we'll get the docker engine installed on our local machine. That will enable us to run some containers locally and begin to understand them better. 
 
 If you're [hearing about Docker for the first time](https://www.docker.com/what-container), the Docker website is a great place to get context.
 
@@ -35,16 +35,18 @@ The environment we'll use for this session is an IBM Cloud Private cluster.
 Make sure you remember the number next to your name on the sign-up sheet... that'll help you figure out your username so you can login to the cluster.
 
 
-We'll also need to [install the kubectl client](https://kubernetes.io/docs/tasks/tools/install-kubectl/)... for this tutorial we'll install the current version of kubectl ... download either the [Mac](https://dl.k8s.io/v1.10.0/kubernetes-client-darwin-amd64.tar.gz), [Linux](https://dl.k8s.io/v1.10.0/kubernetes-client-linux-amd64.tar.gz) or [Windows](https://dl.k8s.io/v1.10.0/kubernetes-client-windows-amd64.tar.gz) binaries appropriate for your system and make sure its available in your path.
+We'll also need to [install the kubectl client](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-binary-via-curl)... for this tutorial we'll install the current version of kubectl ... download either the [Mac](https://dl.k8s.io/v1.10.0/kubernetes-client-darwin-amd64.tar.gz), [Linux](https://dl.k8s.io/v1.10.0/kubernetes-client-linux-amd64.tar.gz) or [Windows](https://dl.k8s.io/v1.10.0/kubernetes-client-windows-amd64.tar.gz) binaries appropriate for your system and make sure its available in your path.
 
-
-Next, lets check that kubectl is properly configured by getting the cluster state:
+If you're using mac or linux, you'll need to make sure the binary is executeable using 
 ```
-$ kubectl cluster-info
-
+$chmod +x kubectl
+$
+$cp ./kubectl /usr/local/bin/kubectl
 ```
 
-Now you should be ready to go!
+Now that its executeable, you can copy it in your path by moving it to /usr/local/bin
+
+Next, lets check that kubectl is installed... you should be ready to go!
 
 
 ---
