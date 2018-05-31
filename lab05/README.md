@@ -65,8 +65,10 @@ NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
 hello-node   NodePort    10.97.250.220   <none>        8080:32644/TCP   1m
 kubernetes   ClusterIP   10.96.0.1       <none>        443/TCP          5h
 
-$ curl $(minikube service hello-node --url)
-Hello World!
+Then we can assemble the url as http:// + [icp master ip] + ":" + [port assigned by the service].
+If the ip address for the master of our cluster is 192.168.99.100 then we should use http://192.168.99.100:30839 to access our new service.
+
+
 
 ```
 We've built and run our first container on Kubernetes!
