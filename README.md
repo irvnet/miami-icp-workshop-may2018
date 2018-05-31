@@ -22,7 +22,7 @@ In this segment we'll talk through the basics:
 - [lab 01](lab01/README.md): Running your first docker container
 - [lab 02](lab02/README.md): Building your own docker container
 
-**Getting Started with Minikube**
+**Getting Started with kubernetes**
 
 - [lab 03](lab03/README.md): Running Kubernetes with IBM Cloud Private
 - [lab 04](lab04/README.md): Deploying a container to Kubernetes
