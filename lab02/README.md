@@ -3,8 +3,13 @@
 
 In this section we'll create a simple node.js process and wrap it in a docker container.
 
+Create a new directory to work from 
+```
+$ mkdir meetup
+$ cd meetup
+```
 
-1. create server.js using your preferred editor and add the following code:
+1. In the meetup directory, create server.js using your preferred editor and add the following code:
 ```
   var http = require('http');
 
@@ -17,7 +22,7 @@ In this section we'll create a simple node.js process and wrap it in a docker co
   www.listen(8080);
 ```
 
-2. Create Dockerfile and enter the following code
+1. In the meetup directory, create a file named "Dockerfile"... (nope, it doesn't need an extension) and enter the following code:
 
 ```
   FROM node:6.9.2
